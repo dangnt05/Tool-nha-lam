@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Course Code Navigator</title>
+    <link rel="stylesheet" href="sidepanel.css">
+  </head>
+  <body>
+    <main>
+      <h1>COURSE CODE<br>NAVIGATOR</h1>
+      <label for="codes">Course codes</label>
+      <textarea id="codes" spellcheck="false" placeholder="ENG2056 10&#10;ENG2052 14&#10;PSF3008 3"></textarea>
+      <button id="start" type="button">START</button>
+
+      <section class="card" aria-live="polite">
+        <span class="label">Current</span>
+        <strong id="current">—</strong>
+        <span id="progress">0 / 0</span>
+      </section>
+      <div class="nav-buttons">
+        <button id="back" type="button">← BACK</button>
+        <button id="next" type="button">NEXT →</button>
+      </div>
+
+      <section class="key-row">
+        <span>Next key</span>
+        <button id="key-button" class="key" type="button" aria-expanded="false">F8</button>
+        <select id="key-select" aria-label="Next key"></select>
+      </section>
+      <section class="key-row back-key-row">
+        <span>Back key</span>
+        <button id="back-key-button" class="key" type="button" aria-expanded="false">F6</button>
+        <select id="back-key-select" aria-label="Back key"></select>
+      </section>
+      <p class="hint">Nhấn F8 để Next, F6 để Back khi đang focus trên trang danh sách môn.</p>
+
+      <label class="toggle" for="auto-select">
+        <input id="auto-select" type="checkbox">
+        <span>Auto-select current course</span>
+      </label>
+      <p class="warning">Mặc định tắt. Chỉ auto-tick khi extension xác minh được đúng ô chọn.</p>
+
+      <details class="advanced">
+        <summary>Customize auto-select</summary>
+        <p>Thiết lập trước, kể cả khi chưa mở trang đăng ký. Chỉ hoạt động khi Auto-select được bật.</p>
+        <label for="select-mode">Cách tìm ô chọn</label>
+        <select id="select-mode">
+          <option value="auto">Tự dò an toàn</option>
+          <option value="selector">CSS selector trong cùng dòng</option>
+          <option value="column">Cột chọn (đếm từ trái, bắt đầu 1)</option>
+        </select>
+        <label for="selection-selector">Selector ô / nút cần click</label>
+        <input id="selection-selector" type="text" spellcheck="false" placeholder="input[type=checkbox]">
+        <label for="selection-column">Số cột chọn</label>
+        <input id="selection-column" type="number" min="1" max="30" value="1">
+        <label for="confirmation-selector">Selector xác nhận (tuỳ chọn)</label>
+        <input id="confirmation-selector" type="text" spellcheck="false" placeholder="input[type=checkbox]:checked">
+        <p>Selector luôn được tìm bên trong đúng dòng môn. Ví dụ xác nhận: <code>input[type=checkbox]:checked</code> hoặc <code>[aria-checked='true']</code>.</p>
+      </details>
+
+      <section class="status-box" aria-live="polite">
+        <span class="label">Status</span>
+        <span id="status">Ready</span>
+      </section>
+    </main>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
